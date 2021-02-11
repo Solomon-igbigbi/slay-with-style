@@ -16,12 +16,13 @@ class Shop extends React.Component  {
 
     render() {
        return (<div>
-            { this.state.collections.map((id, ...otherSectionItems) => {
-               return <CollectionPreview key={id} {...otherSectionItems} />
-            })}
+            { 
+                this.state.collections.map(({ id, ...otherCollectionProps}) => (
+                    <CollectionPreview key={id} {...otherCollectionProps} />))
+            }
         </div>)
     }
-}
+} 
 
 
 
