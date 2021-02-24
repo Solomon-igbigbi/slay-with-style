@@ -1,28 +1,19 @@
 // import { render } from '@testing-library/react'
 import React  from 'react'
+import { Route } from 'react-router-dom'
 import './shoppage.style.scss'
-import CollectionPreview from "../../components/collections-preview/collections-preview.components";
+import CollectionOverview from '../../components/collections-overview/collections-overview.component'
+import CategoryPage from '../category/category.page'
 
-import SHOP_DATA from './shopdata.js'
 
-class Shop extends React.Component  {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            collections: SHOP_DATA,
-        }
-    }
-
-    render() {
-       return (<div>
-            { 
-                this.state.collections.map(({ id, ...otherCollectionProps}) => (
-                    <CollectionPreview key={id} {...otherCollectionProps} />))
-            }
-        </div>)
-    }
-} 
+const Shop = ({ match }) => {
+    console.log(match)
+    return(
+    <div>
+      <Route exact path={`${match.path}`}  component={CollectionOverview}/>
+      <Route exact path={`${match.path}/:categoryId`} component={CategoryPage}/>
+    </div>
+)}
 
 
 
